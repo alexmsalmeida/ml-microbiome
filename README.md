@@ -17,7 +17,9 @@ combines the results files, plots performance results
 (cross-validation and test AUROCs, hyperparameter AUROCs from cross-validation, and benchmark performance),
 and renders a simple [R Markdown report](report.Rmd) with a summary.
 
-![rulegraph](figures/rulegraph.png)
+<p align="center">
+  <img src="rulegraph.png">
+</p>
 
 ## Installation
 
