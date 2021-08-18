@@ -15,16 +15,9 @@ This workflow preprocesses the example dataset, calls `mikropml::run_ml()`
 for each seed and ML method set in the config file,
 combines the results files, plots performance results 
 (cross-validation and test AUROCs, hyperparameter AUROCs from cross-validation, and benchmark performance),
-and renders a simple [R Markdown report](report.Rmd) as a GitHub-flavored markdown file ([example](report-example.md)).
+and renders a simple [R Markdown report](report.Rmd) with a summary.
 
 ![rulegraph](figures/rulegraph.png)
-
-The DAG shows how calls to `run_ml` can run in parallel if
-snakemake is allowed to run more than one job at a time.
-If we use 100 seeds and 4 ML methods, snakemake would call `run_ml` 400 times.
-Here's a small example DAG if we were to use only 2 seeds and 2 ML methods:
-
-![dag](figures/dag.png)
 
 ## Installation
 
