@@ -1,0 +1,3 @@
+cluster: "bsub -q production-rh74 -J {cluster.jobname} -n {cluster.cores} -M {cluster.mem} -o {cluster.outfile}"
+cluster-config: "config/cluster.json"
+verbose: true

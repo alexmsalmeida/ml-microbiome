@@ -5,5 +5,5 @@ ml_methods:
  - rf
  - svmRadial
 kfold: 5
-ncores: 4
-nseeds: 10
+ncores: 16
+nseeds: 5

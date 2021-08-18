@@ -1,25 +1,19 @@
 {
  "__default__": {
-  "account_slurm": "YOUR_ACCOUNT_HERE",
-  "partition": "standard",
   "jobname": "{rule}.{wildcards}",
-  "nodes": 1,
-  "procs": 1,
-  "pmem": "8GB",
-  "walltime": "48:00:00",
-  "email": "YOUR_EMAIL_HERE",
-  "mail_type": "FAIL",
-  "outfile": "log/hpc/jobs/{rule}.{wildcards}.out"
+  "cores": 1,
+  "mem": 8000,
+  "outfile": "results/logs/hpc/jobs/{rule}.{wildcards}.out"
  },
- "preprocess_data": {
-  "procs": "{resources.ncores}",
-  "pmem": "2GB"
+ "preprocess_dta": {
+  "cores": "{resources.ncores}",
+  "mem": 10000
  },
  "run_ml": {
-  "procs": "{resources.ncores}",
-  "pmem": "4GB"
+  "cores": "{resources.ncores}",
+  "mem": 20000
  },
  "combine_hp_performance": {
-  "pmem": "16GB"
+  "mem": 16000
  }
 }
