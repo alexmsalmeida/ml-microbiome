@@ -32,7 +32,7 @@ Here's a small example DAG if we were to use only 2 seeds and 2 ML methods:
 
 2. Clone repository
 ```
-git clone --recursive https://github.com/alexmsalmeida/virsearch.git
+git clone https://github.com/alexmsalmeida/ml-microbiome.git
 ```
 
 ## How to run
