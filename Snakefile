@@ -24,7 +24,7 @@ rule preprocess_data:
         R="code/preproc.R",
         csv=config['dataset']
     output:
-        rds='data/dat_proc.Rds'
+        rds='results/dat_proc.Rds'
     log:
         "results/logs/preprocess_data.txt"
     benchmark:
