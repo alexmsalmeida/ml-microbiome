@@ -1,4 +1,4 @@
-dataset: data.csv
+dataset: /hps/nobackup2/production/metagenomics/aalmeida/project_latinbiota/mapping/results/viruses-above10_binary_world-adult-healthy.csv
 outcome_colname: Variable
 ml_methods:
  - glmnet
@@ -6,4 +6,4 @@ ml_methods:
  - svmRadial
 kfold: 5
 ncores: 16
-nseeds: 5
+nseeds: 10

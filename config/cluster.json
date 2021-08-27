@@ -3,15 +3,15 @@
   "jobname": "{rule}.{wildcards}",
   "cores": 1,
   "mem": 8000,
-  "outfile": "results/logs/hpc/jobs/{rule}.{wildcards}.out"
+  "outfile": "results/logs/hpc/{rule}.{wildcards}.out"
  },
- "preprocess_dta": {
+ "preprocess_data": {
   "cores": "{resources.ncores}",
-  "mem": 10000
+  "mem": 30000
  },
  "run_ml": {
   "cores": "{resources.ncores}",
-  "mem": 20000
+  "mem": 60000
  },
  "combine_hp_performance": {
   "mem": 16000

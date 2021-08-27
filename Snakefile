@@ -11,9 +11,13 @@ nseeds = config['nseeds']
 start_seed = 100
 seeds = range(start_seed, start_seed + nseeds)
 
-log_dir = "results/logs/hpc/jobs"
+log_dir = "results/logs/hpc"
 if not os.path.exists(log_dir):
     os.makedirs(log_dir)
+
+model_dir = "results/models"
+if not os.path.exists(model_dir):
+    os.makedirs(model_dir)
 
 rule targets:
     input:
@@ -43,9 +47,9 @@ rule run_ml:
         R="code/ml.R",
         rds=rules.preprocess_data.output.rds
     output:
-        model="results/runs/{method}_{seed}_model.Rds",
-        perf=temp("results/runs/{method}_{seed}_performance.csv"),
-        feat=temp("results/runs/{method}_{seed}_feature-importance.csv")
+        model="results/models/{method}_{seed}_model.Rds",
+        perf=temp("results/models/{method}_{seed}_performance.csv"),
+        feat=temp("results/models/{method}_{seed}_feature-importance.csv")
     log:
         "results/logs/runs/run_ml.{method}_{seed}.txt"
     benchmark:
@@ -65,7 +69,7 @@ rule run_ml:
 rule combine_results:
     input:
         R="code/combine_results.R",
-        csv=expand("results/runs/{method}_{seed}_{{type}}.csv", method = ml_methods, seed = seeds)
+        csv=expand("results/models/{method}_{seed}_{{type}}.csv", method = ml_methods, seed = seeds)
     output:
         csv='results/{type}_results.csv'
     log:
@@ -80,7 +84,7 @@ rule combine_results:
 rule combine_hp_performance:
     input:
         R='code/combine_hp_perf.R',
-        rds=expand('results/runs/{{method}}_{seed}_model.Rds', seed=seeds)
+        rds=expand('results/models/{{method}}_{seed}_model.Rds', seed=seeds)
     output:
         rds='results/hp_performance_results_{method}.Rds'
     log:
