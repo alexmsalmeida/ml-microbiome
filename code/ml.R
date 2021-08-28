@@ -1,5 +1,3 @@
-source("code/log_smk.R")
-
 doFuture::registerDoFuture()
 future::plan(future::multicore, workers = snakemake@resources[["ncores"]])
 
@@ -9,8 +7,9 @@ ml_results <- mikropml::run_ml(
   method = snakemake@params[["method"]],
   outcome_colname = snakemake@params[['outcome_colname']],
   find_feature_importance = TRUE,
-  kfold = as.numeric(snakemake@params[['kfold']]),
-  seed = as.numeric(snakemake@params[["seed"]])
+  kfold = 5,
+  cv_times = 10,
+  seed = snakemake@params[['seed']])
 )
 
 saveRDS(ml_results, file = snakemake@output[["model"]])

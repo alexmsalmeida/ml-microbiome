@@ -1,4 +1,3 @@
-source("code/log_smk.R")
 library(tidyverse)
 
 dat <- read_csv(snakemake@input[['csv']]) %>%

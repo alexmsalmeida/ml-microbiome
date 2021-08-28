@@ -1,4 +1,3 @@
-source("code/log_smk.R")
 library(tidyverse)
 
 read_bench <- function(filename) {

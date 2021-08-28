@@ -1,17 +1,16 @@
 import os
 
 configfile: 'config/config.yml'
-
 ncores = config['ncores']
+
 ml_methods = config['ml_methods']
-kfold = config['kfold']
 outcome_colname = config['outcome_colname']
 
 nseeds = config['nseeds']
 start_seed = 100
 seeds = range(start_seed, start_seed + nseeds)
 
-log_dir = "results/logs/hpc"
+log_dir = "results/logs"
 if not os.path.exists(log_dir):
     os.makedirs(log_dir)
 
@@ -29,8 +28,6 @@ rule preprocess_data:
         csv=config['dataset']
     output:
         rds='results/dat_proc.Rds'
-    log:
-        "results/logs/preprocess_data.txt"
     benchmark:
         "results/benchmarks/preprocess_data.txt"
     params:
@@ -39,8 +36,8 @@ rule preprocess_data:
         ncores=ncores
     conda:
         "config/environment.yml"
-    script:
-        "code/preproc.R"
+    shell:
+        "Rscript --max-ppsize=500000 {input.R} {resources.ncores} {input.csv} {params} {output}"
 
 rule run_ml:
     input:
@@ -50,15 +47,12 @@ rule run_ml:
         model="results/models/{method}_{seed}_model.Rds",
         perf=temp("results/models/{method}_{seed}_performance.csv"),
         feat=temp("results/models/{method}_{seed}_feature-importance.csv")
-    log:
-        "results/logs/runs/run_ml.{method}_{seed}.txt"
     benchmark:
         "results/benchmarks/runs/run_ml.{method}_{seed}.txt"
     params:
         outcome_colname=outcome_colname,
         method="{method}",
         seed="{seed}",
-        kfold=kfold
     resources:
         ncores=ncores
     conda:
@@ -72,8 +66,6 @@ rule combine_results:
         csv=expand("results/models/{method}_{seed}_{{type}}.csv", method = ml_methods, seed = seeds)
     output:
         csv='results/{type}_results.csv'
-    log:
-        "results/logs/combine_results_{type}.txt"
     benchmark:
         "results/benchmarks/combine_results_{type}.txt"
     conda:
@@ -87,8 +79,6 @@ rule combine_hp_performance:
         rds=expand('results/models/{{method}}_{seed}_model.Rds', seed=seeds)
     output:
         rds='results/hp_performance_results_{method}.Rds'
-    log:
-        "results/logs/combine_hp_perf_{method}.txt"
     benchmark:
         "results/benchmarks/combine_hp_perf_{method}.txt"
     conda:
@@ -102,8 +92,6 @@ rule combine_benchmarks:
         tsv=expand(rules.run_ml.benchmark, method = ml_methods, seed = seeds)
     output:
         csv='results/benchmarks_results.csv'
-    log:
-        'results/logs/combine_benchmarks.txt'
     conda:
         "config/environment.yml"
     script:
@@ -116,8 +104,6 @@ rule plot_performance:
         feat='results/feature-importance_results.csv'   
     output:
         plot='results/figures/performance.png'
-    log:
-        "results/logs/plot_performance.txt"
     conda:
         "config/environment.yml"
     script:
@@ -129,8 +115,6 @@ rule plot_hp_performance:
         rds=rules.combine_hp_performance.output.rds,
     output:
         plot='results/figures/hp_performance_{method}.png'
-    log:
-        'results/logs/plot_hp_perf_{method}.txt'
     conda:
         "config/environment.yml"
     script:
@@ -142,8 +126,6 @@ rule plot_benchmarks:
         csv=rules.combine_benchmarks.output.csv
     output:
         plot='results/figures/benchmarks.png'
-    log:
-        'results/logs/plot_benchmarks.txt'
     conda:
         "config/environment.yml"
     script:
@@ -164,18 +146,7 @@ rule render_report:
         nseeds=nseeds,
         ml_methods=ml_methods,
         ncores=ncores,
-        kfold=kfold
     conda:
         "config/environment.yml"
     script:
         'code/render.R'
-
-rule clean:
-    input:
-        rules.render_report.output,
-        rules.plot_performance.output.plot,
-        rules.plot_benchmarks.output.plot
-    shell:
-        '''
-        rm -rf {input}
-        '''

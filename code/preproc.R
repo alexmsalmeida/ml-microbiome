@@ -1,10 +1,14 @@
-source("code/log_smk.R")
+#!/usr/bin/env Rscript --max-ppsize=500000
+options(expressions=500000)
+
+args = commandArgs(trailingOnly=TRUE)
+
 library(mikropml)
 
 doFuture::registerDoFuture()
-future::plan(future::multicore, workers = snakemake@resources[["ncores"]])
+future::plan(future::multicore, workers = as.numeric(args[1]))
 
-data_raw <- readr::read_csv(snakemake@input[["csv"]])
-data_processed <- preprocess_data(data_raw, outcome_colname = snakemake@params[['outcome_colname']])
+data_raw <- readr::read_csv(args[2])
+data_processed <- preprocess_data(data_raw, outcome_colname = args[3])
 
-saveRDS(data_processed, file = snakemake@output[["rds"]])
+saveRDS(data_processed, file = args[4])

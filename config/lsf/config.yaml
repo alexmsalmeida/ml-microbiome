@@ -1,2 +1,2 @@
-cluster: "bsub -q production-rh74 -J {cluster.jobname} -n {cluster.cores} -M {cluster.mem} -oo {cluster.outfile}"
+cluster: "bsub -q production-rh74 -P {cluster.project} -J {cluster.jobname} -n {cluster.cores} -M {cluster.mem} -oo {cluster.outfile}"
 cluster-config: "config/cluster.json"

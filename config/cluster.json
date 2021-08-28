@@ -3,15 +3,20 @@
   "jobname": "{rule}.{wildcards}",
   "cores": 1,
   "mem": 8000,
-  "outfile": "results/logs/hpc/{rule}.{wildcards}.out"
+  "project": "default",
+  "outfile": "results/logs/{rule}.{wildcards}.out"
  },
  "preprocess_data": {
+  "jobname": "preprocess_data",
   "cores": "{resources.ncores}",
-  "mem": 30000
+  "project": "bigmem",
+  "mem": 500000,
+  "outfile": "results/logs/preprocess_data.out"
  },
  "run_ml": {
   "cores": "{resources.ncores}",
-  "mem": 60000
+  "project": "bigmem",
+  "mem": 150000
  },
  "combine_hp_performance": {
   "mem": 16000

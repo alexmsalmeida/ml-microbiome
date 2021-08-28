@@ -17,8 +17,7 @@ library(knitr)
 
 Machine learning algorithms used include: `r snakemake@params[['ml_methods']]`.
 Models were trained with `r snakemake@params[['nseeds']]`
-different random partitions of the data into training and testing sets using
-`r snakemake@params[['kfold']]`-fold cross validation.
+different random partitions of the data into training and testing sets using 5-fold cross validation.
 
 ## Model Performance
 
