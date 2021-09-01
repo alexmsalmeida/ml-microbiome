@@ -10,7 +10,7 @@
   "jobname": "preprocess_data",
   "cores": "{resources.ncores}",
   "project": "bigmem",
-  "mem": 500000,
+  "mem": 360000,
   "outfile": "results/logs/preprocess_data.out"
  },
  "run_ml": {

@@ -1,7 +1,12 @@
+options(future.globals.maxSize= 891289600)
+
 doFuture::registerDoFuture()
 future::plan(future::multicore, workers = snakemake@resources[["ncores"]])
 
 data_processed <- readRDS(snakemake@input[["rds"]])$dat_transformed
+
+cat("Running ML on", nrow(data_processed), "samples and", ncol(data_processed)-1, "features\n")
+
 ml_results <- mikropml::run_ml(
   dataset = data_processed,
   method = snakemake@params[["method"]],
@@ -9,7 +14,7 @@ ml_results <- mikropml::run_ml(
   find_feature_importance = TRUE,
   kfold = 5,
   cv_times = 10,
-  seed = snakemake@params[['seed']])
+  seed = as.numeric(snakemake@params[['seed']])
 )
 
 saveRDS(ml_results, file = snakemake@output[["model"]])
