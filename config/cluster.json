@@ -11,7 +11,6 @@
   "cores": "{resources.ncores}",
   "project": "bigmem",
   "mem": 360000,
-  "outfile": "results/logs/preprocess_data.out"
  },
  "run_ml": {
   "cores": "{resources.ncores}",

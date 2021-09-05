@@ -46,7 +46,6 @@ rule run_ml:
     output:
         model="results/models/{method}_{seed}_model.Rds",
         perf=temp("results/models/{method}_{seed}_performance.csv"),
-        feat=temp("results/models/{method}_{seed}_feature-importance.csv")
     benchmark:
         "results/benchmarks/runs/run_ml.{method}_{seed}.txt"
     params:
@@ -101,7 +100,6 @@ rule plot_performance:
     input:
         R="code/plot_perf.R",
         csv='results/performance_results.csv',
-        feat='results/feature-importance_results.csv'   
     output:
         plot='results/figures/performance.png'
     conda:
@@ -140,8 +138,6 @@ rule render_report:
         bench_plot=rules.plot_benchmarks.output.plot
     output:
         doc='results/report.md'
-    log:
-        "results/logs/render_report.txt"
     params:
         nseeds=nseeds,
         ml_methods=ml_methods,
