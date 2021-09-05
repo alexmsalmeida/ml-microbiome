@@ -50,3 +50,5 @@ snakemake --use-conda -k -j 100 --profile config/lsf --latency-wait 90
 ```
 
 3. View the results in `results/report.md`.
+
+By default, the pipeline will not estimate feature importance. However, a separate script to do that can be found in `code/get_ml-features.R`.
