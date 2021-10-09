@@ -10,14 +10,11 @@
   "jobname": "preprocess_data",
   "cores": "{resources.ncores}",
   "project": "bigmem",
-  "mem": 360000,
+  "mem": 500000,
  },
  "run_ml": {
   "cores": "{resources.ncores}",
   "project": "bigmem",
-  "mem": 150000
- },
- "combine_hp_performance": {
-  "mem": 16000
+  "mem": 110000
  }
 }

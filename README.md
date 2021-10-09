@@ -13,13 +13,7 @@ Snakemake automatically builds a directed acyclic graph (DAG) of jobs to figure
 out the dependencies of each of the rules and what order to run them in.
 This workflow preprocesses the example dataset, calls `mikropml::run_ml()`
 for each seed and ML method set in the config file,
-combines the results files, plots performance results 
-(cross-validation and test AUROCs, hyperparameter AUROCs from cross-validation, and benchmark performance),
-and renders a simple [R Markdown report](report.Rmd) with a summary.
-
-<p align="center">
-  <img src="rulegraph.png">
-</p>
+and combines the results files.
 
 ## Installation
 
@@ -49,6 +43,6 @@ snakemake --use-conda -k -j 4
 snakemake --use-conda -k -j 100 --profile config/lsf --latency-wait 90
 ```
 
-3. View the results in `results/report.md`.
+3. View the results in `results/performance_results.csv`.
 
 By default, the pipeline will not estimate feature importance as this is very time consuming. However, a separate script to perform this analysis can be found in `code/get_ml-features.R`.
