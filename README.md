@@ -30,11 +30,13 @@ git clone https://github.com/alexmsalmeida/ml-microbiome.git
     - `dataset`: the path to the dataset as a csv file.
     - `outcome_colname`: column name of the outcomes for the dataset.
     - `ml_methods`: list of machine learning methods to use. Must be supported by mikropml. Options are:
+		
 		* glmnet: linear, logistic, or multiclass regression
 		* rf: random forest
 		* rpart2: decision tree
 		* svmRadial: support vector machine
 		* xgbTree: xgboost
+
     - `kfold`: k number for k-fold cross validation during model training.
     - `ncores`: the number of cores to use for preprocessing and for each `mikropml::run_ml()` call. Do not exceed the number of cores you have available.
     - `nseeds`: the number of different random seeds to use for training models with `mikropml::run_ml()`.
