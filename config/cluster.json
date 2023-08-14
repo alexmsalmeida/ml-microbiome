@@ -11,7 +11,7 @@
  "preprocess_data": {
   "jobname": "preprocess_data",
   "cores": "{resources.ncores}",
-  "mem": 100000,
+  "mem": 50000
  },
  "run_ml": {
   "cores": "{resources.ncores}",

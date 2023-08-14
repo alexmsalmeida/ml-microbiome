@@ -1,10 +1,7 @@
-dataset: /rds/project/rds-aFEMMKDjWlo/aalmeida/antipath/ml-microbiome/healthy_adults.csv
+dataset: input.csv
 outcome_colname: Variable
 ml_methods:
- - glmnet
  - rf
- - svmRadial
- - rpart2
  - xgbTree
 ncores: 16
 nseeds: 10
