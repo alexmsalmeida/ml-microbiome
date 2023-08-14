@@ -27,7 +27,7 @@ git clone https://github.com/alexmsalmeida/ml-microbiome.git
 ## How to run
 
 1. Edit the configuration file [`config/config.yml`](config/config.yml).
-    - `dataset`: the path to the dataset as a csv file.
+    - `dataset`: path to the input csv file. Rows as samples and columns as features (e.g., species or genes) with an additional column for the outcome variable per sample.
     - `outcome_colname`: column name of the outcomes for the dataset.
     - `ml_methods`: list of machine learning methods to use. Must be supported by mikropml. Options are:
 		
@@ -45,9 +45,9 @@ git clone https://github.com/alexmsalmeida/ml-microbiome.git
 ```
 snakemake --use-conda -k -j 4
 ```
-2. (option 2) Run the pipeline on a cluster (e.g., LSF)
+2. (option 2) Run the pipeline on a cluster (e.g., SLURM)
 ```
-snakemake --use-conda -k -j 100 --profile config/lsf --latency-wait 90
+snakemake --use-conda -k -j 100 --profile config/slurm --latency-wait 120
 ```
 
 3. View the results in `results/performance_results.csv`.

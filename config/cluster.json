@@ -2,19 +2,19 @@
  "__default__": {
   "jobname": "{rule}.{wildcards}",
   "cores": 1,
-  "mem": 8000,
-  "project": "default",
+  "mem": 10000,
+  "queue": "icelake-himem",
+  "time": "12:00:00",
+  "project": "ALMEIDA-SL3-CPU",
   "outfile": "results/logs/{rule}.{wildcards}.out"
  },
  "preprocess_data": {
   "jobname": "preprocess_data",
   "cores": "{resources.ncores}",
-  "project": "bigmem",
-  "mem": 500000,
+  "mem": 100000,
  },
  "run_ml": {
   "cores": "{resources.ncores}",
-  "project": "bigmem",
-  "mem": 110000
+  "mem": 50000
  }
 }
