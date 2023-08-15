@@ -4,7 +4,7 @@
   "cores": 1,
   "mem": 1000,
   "queue": "icelake",
-  "time": "12:00:00",
+  "time": "36:00:00",
   "project": "ALMEIDA-SL2-CPU",
   "outfile": "results/logs/{rule}.{wildcards}.out"
  },
