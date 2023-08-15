@@ -3,5 +3,5 @@ outcome_colname: Variable
 ml_methods:
  - rf
  - xgbTree
-ncores: 16
+ncores: 8
 nseeds: 10
