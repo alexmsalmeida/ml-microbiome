@@ -12,7 +12,7 @@ cat("Reading input file...\n")
 data_raw <- read.csv(args[2], row.names = 1, check.names = FALSE)
 
 cat("Preprocessing data...\n")
-data_processed <- preprocess_data(data_raw, outcome_colname = args[3], remove_var = "zv", prefilter_threshold = round(nrow(data_raw)*0.01)
+data_processed <- preprocess_data(data_raw, outcome_colname = args[3], remove_var = "zv", prefilter_threshold = round(nrow(data_raw)*0.01))
 
 cat("Saving final dataframe...\n")
 saveRDS(data_processed, file = args[4])
