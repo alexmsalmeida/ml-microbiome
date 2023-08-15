@@ -15,6 +15,7 @@
  },
  "run_ml": {
   "cores": "{resources.ncores}",
-  "mem": 20000
+  "queue": "icelake-himem"
+  "mem": 60000
  }
 }
