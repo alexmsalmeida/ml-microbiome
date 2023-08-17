@@ -2,9 +2,7 @@ dataset: input.csv
 outcome_colname: Variable
 ml_methods:
  - glmnet
- - svmRadial
- - rpart2
  - rf
  - xgbTree
 ncores: 8
-nseeds: 20
+nseeds: 10
