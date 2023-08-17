@@ -5,4 +5,4 @@ ml_methods:
  - rf
  - xgbTree
 ncores: 8
-nseeds: 10
+nseeds: 20
