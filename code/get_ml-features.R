@@ -1,4 +1,4 @@
-#!/nfs/production/interpro/metagenomics/mags-scripts/miniconda3/envs/smk-ML/bin/Rscript
+#!/usr/bin/env Rscript
 
 options(future.globals.maxSize= 891289600)
 
