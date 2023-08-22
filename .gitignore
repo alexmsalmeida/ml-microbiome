@@ -1,8 +1,3 @@
 .snakemake/
-data/
-log/
-benchmarks/
+.RData
 results/
-.Rproj.user
-*KLS*
-*_test*
