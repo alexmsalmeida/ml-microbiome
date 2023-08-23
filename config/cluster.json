@@ -15,9 +15,9 @@
  },
  "run_ml": {
   "cores": "{resources.ncores}",
-  "queue": "icelake",
+  "queue": "icelake-himem",
   "time": "36:00:00",
   "project": "ALMEIDA-SL2-CPU",
-  "mem": 40000
+  "mem": 90000
  }
 }
