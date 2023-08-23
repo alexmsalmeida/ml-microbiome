@@ -12,9 +12,9 @@ ml_results <- mikropml::run_ml(
   method = snakemake@params[["method"]],
   outcome_colname = snakemake@params[['outcome_colname']],
   find_feature_importance = FALSE,
-  kfold = 10,
+  kfold = 5,
   cv_times = 10,
-  training_frac = 0.9,
+  training_frac = 0.8,
   seed = as.numeric(snakemake@params[['seed']])
 )
 
