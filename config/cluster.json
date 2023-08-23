@@ -11,13 +11,13 @@
  "preprocess_data": {
   "jobname": "preprocess_data",
   "cores": "{resources.ncores}",
-  "mem": 20000
+  "mem": 40000
  },
  "run_ml": {
   "cores": "{resources.ncores}",
-  "queue": "icelake-himem",
-  "time": "36:00:00",
-  "project": "ALMEIDA-SL2-CPU",
-  "mem": 60000
+  "queue": "icelake",
+  "time": "12:00:00",
+  "project": "ALMEIDA-SL3-CPU",
+  "mem": 40000
  }
 }
