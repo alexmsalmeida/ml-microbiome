@@ -4,5 +4,5 @@ ml_methods:
  - glmnet
  - rf
  - xgbTree
-ncores: 16
+ncores: 32
 nseeds: 10
