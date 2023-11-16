@@ -1,8 +1,9 @@
-dataset: input.csv
+dataset: /rds/user/aa2369/hpc-work/scripts/snakemake/ml-microbiome/Healthy-Adult_Entero.csv
 outcome_colname: Variable
+groups_colname: Study
 ml_methods:
  - glmnet
  - rf
  - xgbTree
-ncores: 16
+ncores: 4
 nseeds: 10

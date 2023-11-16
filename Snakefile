@@ -4,7 +4,6 @@ configfile: 'config/config.yml'
 ncores = config['ncores']
 
 ml_methods = config['ml_methods']
-outcome_colname = config['outcome_colname']
 
 nseeds = config['nseeds']
 start_seed = 100
@@ -29,23 +28,26 @@ rule preprocess_data:
     output:
         rds='results/dat_proc.Rds'
     params:
-        outcome_colname=outcome_colname
+        outcome_colname=config['outcome_colname'],
+        groups_colname=config['groups_colname']
     resources:
         ncores=ncores
     conda:
         "config/environment.yml"
     shell:
-        "Rscript --max-ppsize=500000 {input.R} {resources.ncores} {input.csv} {params} {output}"
+        "Rscript --max-ppsize=500000 {input.R} {resources.ncores} {input.csv} {params.outcome_colname} {params.groups_colname} {output}"
 
 rule run_ml:
     input:
         R="code/ml.R",
-        rds=rules.preprocess_data.output.rds
+        rds=rules.preprocess_data.output.rds,
+        csv=config['dataset']
     output:
         model="results/models/{method}_{seed}_model.Rds",
         perf=temp("results/models/{method}_{seed}_performance.csv"),
     params:
-        outcome_colname=outcome_colname,
+        outcome_colname=config['outcome_colname'],
+        groups_colname=config['groups_colname'],
         method="{method}",
         seed="{seed}",
     resources:
