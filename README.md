@@ -29,7 +29,7 @@ git clone https://github.com/alexmsalmeida/ml-microbiome.git
 1. Edit the configuration file [`config/config.yml`](config/config.yml).
     - `dataset`: path to the input csv file. Rows as samples and columns as features (e.g., species or genes) with an additional column for the outcome variable per sample.
     - `outcome_colname`: column name of the outcomes for the dataset.
-    - `groups_colname`: column name of sample grouping (e.g., batch).
+    - `groups_colname`: column name of sample grouping (e.g., batch). Use the same identifier for all samples if no grouping required.
     - `ml_methods`: list of machine learning methods to use. Must be supported by mikropml. Options are:
 		
 		* glmnet: linear, logistic, or multiclass regression
