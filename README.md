@@ -38,7 +38,6 @@ git clone https://github.com/alexmsalmeida/ml-microbiome.git
 		* svmRadial: support vector machine
 		* xgbTree: xgboost
 
-    - `kfold`: k number for k-fold cross validation during model training.
     - `ncores`: the number of cores to use for preprocessing and for each `mikropml::run_ml()` call. Do not exceed the number of cores you have available.
     - `nseeds`: the number of different random seeds to use for training models with `mikropml::run_ml()`.
 
