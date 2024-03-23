@@ -3,7 +3,7 @@
   "jobname": "{rule}.{wildcards}",
   "cores": 1,
   "mem": 1000,
-  "queue": "icelake",
+  "queue": "icelake-himem",
   "time": "12:00:00",
   "project": "ALMEIDA-SL3-CPU",
   "outfile": "results/logs/{rule}.{wildcards}.out"
@@ -15,7 +15,6 @@
  },
  "run_ml": {
   "cores": "{resources.ncores}",
-  "queue": "icelake-himem",
   "mem": 40000
  }
 }
