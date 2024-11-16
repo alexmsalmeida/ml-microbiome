@@ -2,9 +2,9 @@ name: smk-ML
 channels:
   - conda-forge
   - bioconda
-  - defaults
   - r
 dependencies:
+  - icu==72.1
   - r-base=4
   - r-cowplot
   - r-doFuture
@@ -14,5 +14,6 @@ dependencies:
   - r-mikropml
   - r-rmarkdown
   - r-rpart
+  - r-stringi=1.7.12
   - r-tidyverse=1.3
   - snakemake=5
